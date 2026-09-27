@@ -186,7 +186,7 @@ nav a:hover {
 }
 
 /* === FOOTER === */
-.footer {
+footer {
     background: #030712;
     color: #9ca3af;
     text-align: center;
@@ -194,7 +194,7 @@ nav a:hover {
     font-size: 0.9rem;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .navbar .container {
         flex-direction: column;
         gap: 15px;
@@ -208,5 +208,133 @@ nav a:hover {
     .hero {
         padding: 70px 0;
     }
-    
+
+}
+
+/* ====================
+    Equipment Page
+==================== */
+.equipment-page {
+    padding: 80px 0;
+    min-height: 80vh;
+}
+
+.page-heading {
+    text-align: center;
+    max-width: 950;
+}
+
+/* === Search and Filter === */
+.equipmen-controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.equipmen-controls input {
+    padding: 13px 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1rem;
+    flex: 1;
+}
+
+.equipmen-controls select {
+    padding: 13px 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1rem;
+    min-width: 200px;
+    background: white;
+}
+
+/* === Equipment Grid === */
+.equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+/* === Equipment Card*/
+.equipment-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.equipment-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* === Equipment Image === */
+.equipment-image {
+    height: 220px;
+    background: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.equipment-image span {
+    font-size: 5rem;
+}
+
+/* === Equipment Content ===*/
+.equipment-content {
+    padding:  25px;
+}
+
+.equipment-category {
+    color: #d97706;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* === Equipment Info === */
+.equipment-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.available {
+    color: #15803d;
+    background: #dcfce7;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.rental-button {
+    width: 100%;
+    text-align: center;
+}
+
+/* === No Result === */
+.no-results {
+    text-align: center;
+    padding: 50px 0;
+    color: #6b7280;
+}
+
+/* === Equipment Resposive === */
+@media (max-width: 768px) {
+    .equipment-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .equipmen-controls {
+        flex-direction: column;
+    }
+
+    .equipmen-controls select {
+        width: 100%;
+    }
 }

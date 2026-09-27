@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Equipment | ERMS</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container">
+
+            <a href="../index.html" class="logo">
+                ERMS
+            </a>
+
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="equipment.html">Equipment</a>
+                <a href="login.html">Login</a>
+                <a href="register.html" class="nav-button">
+                    Register
+                </a>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- Equipment Page -->
+    <main>
+
+        <section class="equipment-page">
+
+            <div class="container">
+
+                <div class="page-heading">
+
+                    <p class="eyebrow">
+                        EQUIPMENT CATALOG
+                    </p>
+
+                    <h1>
+                        Available Equipment
+                    </h1>
+
+                    <p>
+                        Browse our available equipment and choose
+                        what you need for your rental.
+                    </p>
+
+                </div>
+
+
+                <!-- Search and Filter -->
+                <div class="equipment-controls">
+
+                    <input
+                        type="text"
+                        id="equipmentSearch"
+                        placeholder="Search equipment..."
+                    >
+
+                    <select id="categoryFilter">
+
+                        <option value="all">
+                            All Categories
+                        </option>
+
+                        <option value="computer">
+                            Computers
+                        </option>
+
+                        <option value="camera">
+                            Cameras
+                        </option>
+
+                        <option value="audio">
+                            Audio Equipment
+                        </option>
+
+                        <option value="projector">
+                            Projectors
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Equipment Grid -->
+                <div class="equipment-grid" id="equipmentGrid">
+
+
+                    <!-- Laptop -->
+                    <article
+                        class="equipment-card"
+                        data-category="computer"
+                        data-name="Business Laptop"
+                    >
+
+                        <div class="equipment-image">
+                            <span>💻</span>
+                        </div>
+
+                        <div class="equipment-content">
+
+                            <span class="equipment-category">
+                                Computers
+                            </span>
+
+                            <h2>
+                                Business Laptop
+                            </h2>
+
+                            <p>
+                                Professional laptop suitable for
+                                business, school, and office use.
+                            </p>
+
+                            <div class="equipment-info">
+
+                                <strong>
+                                    ₱800 / day
+                                </strong>
+
+                                <span class="available">
+                                    Available
+                                </span>
+
+                            </div>
+
+                            <a
+                                href="rental.html?equipment=Business%20Laptop"
+                                class="button primary rental-button"
+                            >
+                                Rent Now
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Camera -->
+                    <article
+                        class="equipment-card"
+                        data-category="camera"
+                        data-name="DSLR Camera"
+                    >
+
+                        <div class="equipment-image">
+                            <span>📷</span>
+                        </div>
+
+                        <div class="equipment-content">
+
+                            <span class="equipment-category">
+                                Cameras
+                            </span>
+
+                            <h2>
+                                DSLR Camera
+                            </h2>
+
+                            <p>
+                                High-quality DSLR camera for
+                                photography and events.
+                            </p>
+
+                            <div class="equipment-info">
+
+                                <strong>
+                                    ₱1,200 / day
+                                </strong>
+
+                                <span class="available">
+                                    Available
+                                </span>
+
+                            </div>
+
+                            <a
+                                href="rental.html?equipment=DSLR%20Camera"
+                                class="button primary rental-button"
+                            >
+                                Rent Now
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Projector -->
+                    <article
+                        class="equipment-card"
+                        data-category="projector"
+                        data-name="HD Projector"
+                    >
+
+                        <div class="equipment-image">
+                            <span>📽️</span>
+                        </div>
+
+                        <div class="equipment-content">
+
+                            <span class="equipment-category">
+                                Projectors
+                            </span>
+
+                            <h2>
+                                HD Projector
+                            </h2>
+
+                            <p>
+                                HD projector suitable for
+                                presentations and events.
+                            </p>
+
+                            <div class="equipment-info">
+
+                                <strong>
+                                    ₱1,000 / day
+                                </strong>
+
+                                <span class="available">
+                                    Available
+                                </span>
+
+                            </div>
+
+                            <a
+                                href="rental.html?equipment=HD%20Projector"
+                                class="button primary rental-button"
+                            >
+                                Rent Now
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Speaker -->
+                    <article
+                        class="equipment-card"
+                        data-category="audio"
+                        data-name="Portable Speaker"
+                    >
+
+                        <div class="equipment-image">
+                            <span>🔊</span>
+                        </div>
+
+                        <div class="equipment-content">
+
+                            <span class="equipment-category">
+                                Audio Equipment
+                            </span>
+
+                            <h2>
+                                Portable Speaker
+                            </h2>
+
+                            <p>
+                                Portable speaker system for
+                                meetings, parties, and events.
+                            </p>
+
+                            <div class="equipment-info">
+
+                                <strong>
+                                    ₱700 / day
+                                </strong>
+
+                                <span class="available">
+                                    Available
+                                </span>
+
+                            </div>
+
+                            <a
+                                href="rental.html?equipment=Portable%20Speaker"
+                                class="button primary rental-button"
+                            >
+                                Rent Now
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- No Results -->
+                <p
+                    id="noResults"
+                    class="no-results"
+                    style="display: none;"
+                >
+                    No equipment found.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+            <p>
+                &copy; 2026 Equipment Rental Management System.
+                All rights reserved.
+            </p>
+    </footer>
+
+    <script src="../js/script.js"></script>
+
+</body>
+</html>
