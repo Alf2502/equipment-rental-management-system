@@ -1,0 +1,65 @@
+/*  === DESIGN VARIABLES ===
+    Use to confihure unified variable such as color, font, layout and etc.  
+*/
+
+:root {
+
+    /* === Colors === */
+    --color-primary: #f59e0b;
+    --color-primary-dark: #d97706;
+
+    --color-dark: #111827;
+    --color-darkest: #030712;
+
+    --color-text: #1f2937;
+    --color-text-muted: #6b7280;
+
+    --color-background: #ffffff;
+    --color-background-soft: #f9fafb;
+    --color-background-gray: #f3f4f6;
+
+    --color-border: #e5e7eb;
+
+    --color-success: #15803d;
+    --color-success-background: #dcfce7;
+
+    --color-danger: #dc2626;
+    --color-danger-background: #fee2e2;
+
+
+    /* === Typography === */
+    --font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.5rem;
+    --font-size-2xl: 2rem;
+    --font-size-3xl: 3rem;
+
+    /* === Layout === */
+    --containe-width: 1200px;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 4rem;
+    --spacing-2xl: 6rem;
+
+    /* === Border Radius === */
+    --radius-2xs: 1px;
+    --radius-xs: 2px;
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 10px;
+    --radius-full: 999px;
+
+    /* === Shadows === */
+    --shadow-sm:
+        0 2px 6px rgba(0, 0, 0, 0.05);
+    --shadow-md:
+        0 8px 20px rgba(0, 0, 0, 0.08);
+
+}

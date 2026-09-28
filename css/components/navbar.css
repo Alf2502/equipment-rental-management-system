@@ -1,0 +1,61 @@
+/* === NAVBAR ===
+    Navigation bar synchronize pages design
+*/
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--color-dark);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 70px;
+}
+
+/* === LOGO === */
+.logo {
+    color: white;
+
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+}
+
+/* === NAVIGATION === */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.nav-link {
+    color: white;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: var(--color-primary);
+}
+
+/* === MOBILE === */
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+
+        padding: var(--spacing-sm) 0;
+    }
+
+    .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

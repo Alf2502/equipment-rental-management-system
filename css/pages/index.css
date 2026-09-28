@@ -1,0 +1,49 @@
+.main-section {
+    background-color: var(--color-background);
+    padding: var(--spacing-lg);
+}
+
+.main-content {
+    display: flex;
+    align-items: center;
+}
+
+.hero-eye {
+    font-size: var(--font-size-md);
+}
+
+.hero-actions {
+    gap: 15px;
+    margin-top: var(--spacing-lg);
+}
+
+.features {
+    padding: var(--spacing-2xs) 0;
+}
+
+.section-heading {
+    text-align: center;
+    margin: 0 auto var(--spacing-lg);
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xs);
+}
+
+.feature-card {
+    padding: var(--spacing-xl);
+    border: var(--radius-xs) solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+.cta {
+    background: var(--color-background-gray);
+    text-align: center;
+    padding: var(--spacing-xl) 0;
+}
+
+.cta p {
+    padding-bottom: var(--spacing-md);
+}

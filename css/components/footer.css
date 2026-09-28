@@ -1,0 +1,11 @@
+footer {
+    background: var(--color-dark);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    padding: 15px 0;
+    font-size: var(--font-size-sm);
+}
+
+footer p {
+    color: white;
+}

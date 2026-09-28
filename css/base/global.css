@@ -1,0 +1,76 @@
+/* === GLOBAL STYLES ===
+    Global style for synchronize design
+*/
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
+    line-height: 1.6;
+    color: var(--color-text);
+    background: var(--color-background);
+}
+
+
+/* === CONTAINER === */
+.container {
+    width: 90%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+/* === SECTION === */
+.section {
+    padding: var(--spacing-2xl) 0;
+}
+
+/* === PAGE HEADING === */
+.page-heading {
+    max-width: 700px;
+    margin: 0 auto var(--spacing-xl);
+    text-align: center;
+}
+
+.page-heading h1 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-dark);
+    font-size: var(--font-size-3xl);
+    line-height: 1.2;
+}
+
+.page-heading p {
+    color: var(--color-text-muted);
+}
+
+/* === Global Heading & Paragraph ===*/
+h2 {
+    font-size: var(--font-size-2xl);
+    color: var(--color-dark);
+    margin-bottom: var(--spacing-sm);
+}
+
+h3 {
+    font-size: var(--font-size-xl);
+    color: var(--color-dark);
+    margin-bottom: var(--spacing-sm);
+}
+
+p {
+    color: var(--color-text);
+}
+
+/* === EYEBROW === */
+.eyebrow {
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-primary-dark);
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    .page-heading h1 {
+        font-size: var(--font-size-2xl);
+    }
+}
