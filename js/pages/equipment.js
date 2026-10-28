@@ -1,158 +1,156 @@
-/* === EQUIPMENT DATA === */
-const equipmentData = [
-    {
-        id: 1,
-        name: "Business Laptop",
-        category: "computer",
-        categoryName: "Computers",
-        description:
-            "Professional laptop suitable for business, school, and office use.",
-        rate: 800,
-        icon: "💻",
-        available: true
-    },
+let equipmentData = [];
 
-    {
-        id: 2,
-        name: "DSLR Camera",
-        category: "camera",
-        categoryName: "Cameras",
-        description:
-            "High-quality DSLR camera suitable for photography and events.",
-        rate: 1200,
-        icon: "📷",
-        available: true
-    },
-
-    {
-        id: 3,
-        name: "HD Projector",
-        category: "projector",
-        categoryName: "Projectors",
-        description:
-            "HD projector suitable for presentations, meetings, and events.",
-        rate: 1000,
-        icon: "📽️",
-        available: true
-    },
-
-    {
-        id: 4,
-        name: "Portable Speaker",
-        category: "audio",
-        categoryName: "Audio Equipment",
-        description:
-            "Portable speaker system for meetings, parties, and events.",
-        rate: 700,
-        icon: "🔊",
-        available: true
-    }
-];
-
-/* === DOM ELEMENTS === */
 const equipmentGrid = document.getElementById("equipmentGrid");
 const equipmentSearch = document.getElementById("equipmentSearch");
 const categoryFilter = document.getElementById("categoryFilter");
 const noResults = document.getElementById("noResults");
 
-/* === FORMAT CURRENCY === */
+// Format prices in Philippine pesos
 function formatCurrency(amount) {
-    return `₱${amount.toLocaleString()}`;
+    return new Intl.NumberFormat("en-PH", {
+        style: "currency",
+        currency: "PHP",
+        maximumFractionDigits: 0
+    }).format(amount);
 }
 
-/* === CREATE EQUIPMENT CARD === */
+// Escape text before inserting API data into HTML
+function escapeHTML(value) {
+    return String(value).replace(/[&<>"']/g, character => {
+        const entities = {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        };
+
+        return entities[character];
+    });
+}
+
+// Create an equipment card
 function createEquipmentCard(equipment) {
-    const card = document.createElement("article");
-    card.className = "card equipment-card";
-    card.innerHTML = `
-        <div class="equipment-card-image">
-            <span>
-                ${equipment.icon}
-            </span>
-        </div>
+    const availability = equipment.available
+        ? "Available"
+        : "Unavailable";
 
-        <div class="equipment-card-content">
-            <span class="equipment-card-category">
-                ${equipment.categoryName}
-            </span>
+    const button = equipment.available
+        ? `<a href="rental.html?equipment=${encodeURIComponent(equipment.id)}"
+              class="button button-primary">
+              Rent Now
+           </a>`
+        : `<button class="button button-secondary" disabled>
+              Unavailable
+           </button>`;
 
-            <h2 class="equipment-card-title">
-                ${equipment.name}
-            </h2>
-
-            <p class="equipment-card-description">
-                ${equipment.description}
-            </p>
-
-            <div class="equipment-card-footer">
-                <span class="equipment-card-price">
-                    ${formatCurrency(equipment.rate)}
-                    / day
-                </span>
-
-                <span class="equipment-card-status">
-                    ${
-                        equipment.available
-                            ? "Available"
-                            : "Unavailable"
-                    }
-                </span>
+    return `
+        <article class="card">
+            <div class="equipment-card-image">
+                <span aria-hidden="true">${escapeHTML(equipment.icon)}</span>
             </div>
 
-            <a
-                href="rental.html?equipment=${encodeURIComponent(equipment.name)}"
-                class="button button-primary"
-            >
-                Rent Now
-            </a>
-        </div>
-    `;
+            <div class="equipment-card-content">
+                <span class="equipment-category">
+                    ${escapeHTML(equipment.categoryName)}
+                </span>
 
-    return card;
+                <h2 class="equipment-card-title">
+                    ${escapeHTML(equipment.name)}
+                </h2>
+
+                <p class="equipment-card-description">
+                    ${escapeHTML(equipment.description)}
+                </p>
+
+                <div class="equipment-card-footer">
+                    <div class="equipment-price">
+                        <strong>${formatCurrency(equipment.rate)}</strong>
+                        <span>/ day</span>
+                    </div>
+
+                    <span class="equipment-status ${
+                        equipment.available ? "available" : "unavailable"
+                    }">
+                        ${availability}
+                    </span>
+                </div>
+
+                ${button}
+            </div>
+        </article>
+    `;
 }
 
-/* === DISPLAY EQUIPMENT === */
-function displayEquipment(equipmentList) {
-    equipmentGrid.innerHTML = "";
-
-    if (equipmentList.length === 0) {
+// Display equipment cards
+function displayEquipment(items) {
+    if (items.length === 0) {
+        equipmentGrid.innerHTML = "";
         noResults.hidden = false;
         return;
     }
 
     noResults.hidden = true;
 
-    equipmentList.forEach(equipment => {
-        const card = createEquipmentCard(equipment);
-        equipmentGrid.appendChild(card);
-    });
+    equipmentGrid.innerHTML = items
+        .map(createEquipmentCard)
+        .join("");
 }
 
-/* === FILTER EQUIPMENT === */
+// Filter equipment by name and category
 function filterEquipment() {
-    const searchTerm = equipmentSearch.value.trim().toLowerCase();
+    const searchTerm = equipmentSearch.value
+        .trim()
+        .toLowerCase();
+
     const selectedCategory = categoryFilter.value;
 
     const filteredEquipment = equipmentData.filter(equipment => {
-        const matchesSearch = equipment.name.toLowerCase().includes(searchTerm);
-        const matchesCategory = selectedCategory === "all" || equipment.category === selectedCategory;
-            return (matchesSearch && matchesCategory);
-    });
+        const matchesSearch =
+            equipment.name.toLowerCase().includes(searchTerm) ||
+            equipment.description.toLowerCase().includes(searchTerm);
 
+        const matchesCategory =
+            selectedCategory === "all" ||
+            equipment.category === selectedCategory;
+
+        return matchesSearch && matchesCategory;
+    });
 
     displayEquipment(filteredEquipment);
 }
 
-/* === EVENT LISTENERS === */
-if (equipmentSearch) {
-    equipmentSearch.addEventListener("input",filterEquipment);
+// Retrieve equipment from the Express API
+async function loadEquipment() {
+    try {
+        equipmentGrid.innerHTML = "<p>Loading equipment...</p>";
+
+        const response = await apiRequest("/equipment");
+
+        if (!response.success) {
+            throw new Error("Unable to retrieve equipment.");
+        }
+
+        equipmentData = response.data;
+
+        filterEquipment();
+    } catch (error) {
+        console.error("Equipment loading error:", error);
+
+        equipmentGrid.innerHTML = `
+            <p role="alert">
+                Error: ${escapeHTML(error.message)}
+                Unable to load equipment. Please try again later.
+            </p>
+        `;
+
+        noResults.hidden = true;
+    }
 }
 
-if (categoryFilter) {
-    categoryFilter.addEventListener("change",filterEquipment);
-}
+// Search and category filter events
+equipmentSearch.addEventListener("input", filterEquipment);
+categoryFilter.addEventListener("change", filterEquipment);
 
-/* === INITIALIZE === */
-if (equipmentGrid) {
-    displayEquipment(equipmentData);
-}
+// Load equipment when the page opens
+loadEquipment();
