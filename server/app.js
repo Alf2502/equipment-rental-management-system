@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const path = require("path");
 
@@ -6,7 +8,6 @@ const equipmentRoutes = require("./routes/equipment.routes");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -32,7 +33,6 @@ app.use("/api", (req, res) => {
     });
 });
 
-// Start server
 app.listen(PORT, () => {
     console.log(`ERMS server running at http://localhost:${PORT}`);
 });

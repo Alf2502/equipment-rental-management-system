@@ -1,70 +1,72 @@
-const equipmentData = [
-    {
-        id: 1,
-        name: "Business Laptop",
-        category: "computer",
-        categoryName: "Computers",
-        description: "Professional laptop suitable for business, school, and office use.",
-        rate: 800,
-        icon: "💻",
-        available: true
-    },
-    {
-        id: 2,
-        name: "DSLR Camera",
-        category: "camera",
-        categoryName: "Cameras",
-        description: "High-quality DSLR camera suitable for photography and events.",
-        rate: 1200,
-        icon: "📷",
-        available: true
-    },
-    {
-        id: 3,
-        name: "HD Projector",
-        category: "projector",
-        categoryName: "Projectors",
-        description: "HD projector suitable for presentations, meetings, and events.",
-        rate: 1000,
-        icon: "📽️",
-        available: true
-    },
-    {
-        id: 4,
-        name: "Portable Speaker",
-        category: "audio",
-        categoryName: "Audio Equipment",
-        description: "Portable speaker system for meetings, parties, and events.",
-        rate: 700,
-        icon: "🔊",
-        available: true
-    }
-];
+const pool = require("../config/database");
 
-function getAllEquipment(req, res) {
-    res.status(200).json({
-        success: true,
-        count: equipmentData.length,
-        data: equipmentData
-    });
-}
+async function getAllEquipment(req, res) {
+    try {
+        const [equipment] = await pool.query(`
+            SELECT
+                id,
+                name,
+                category,
+                category_name AS categoryName,
+                description,
+                daily_rate AS rate,
+                icon,
+                available
+            FROM equipment
+            ORDER BY id ASC
+        `);
 
-function getEquipmentById(req, res) {
-    const equipment = equipmentData.find(
-        item => item.id === Number(req.params.id)
-    );
+        res.status(200).json({
+            success: true,
+            count: equipment.length,
+            data: equipment
+        });
+    } catch (error) {
+        console.error("Error retrieving equipment:", error.message);
 
-    if (!equipment) {
-        return res.status(404).json({
+        res.status(500).json({
             success: false,
-            message: "Equipment not found."
+            message: "Unable to retrieve equipment."
         });
     }
+}
 
-    res.status(200).json({
-        success: true,
-        data: equipment
-    });
+async function getEquipmentById(req, res) {
+    try {
+        const [equipment] = await pool.execute(
+            `SELECT
+                id,
+                name,
+                category,
+                category_name AS categoryName,
+                description,
+                daily_rate AS rate,
+                icon,
+                available
+             FROM equipment
+             WHERE id = ?`,
+            [req.params.id]
+        );
+
+        if (equipment.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: "Equipment not found."
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            data: equipment[0]
+        });
+    } catch (error) {
+        console.error("Error retrieving equipment:", error.message);
+
+        res.status(500).json({
+            success: false,
+            message: "Unable to retrieve equipment."
+        });
+    }
 }
 
 module.exports = {
