@@ -1,0 +1,2 @@
+id,firstName,lastName,email,password,phone,role,createdAt
+1,Juan,Dela Cruz,juan@example.com,$2b$12$F0JSQxNc25Yc/XlySZgSeOvEwjQzLynVFLQakpqlQMUSAndbLWM2u,09123456789,customer,2026-11-05T10:22:36.592Z

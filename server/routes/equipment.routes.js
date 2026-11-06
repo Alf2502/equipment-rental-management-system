@@ -1,16 +1,20 @@
+
 const express = require("express");
 
 const {
     getAllEquipment,
-    getEquipmentById
+    getEquipmentById,
+    createEquipment,
+    updateEquipment,
+    deleteEquipment
 } = require("../controllers/equipment.controller");
 
 const router = express.Router();
 
-// GET /api/equipment
 router.get("/", getAllEquipment);
-
-// GET /api/equipment/:id
 router.get("/:id", getEquipmentById);
+router.post("/", createEquipment);
+router.put("/:id", updateEquipment);
+router.delete("/:id", deleteEquipment);
 
 module.exports = router;

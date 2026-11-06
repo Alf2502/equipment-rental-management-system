@@ -1,0 +1,5 @@
+id,name,category,categoryName,description,rate,icon,available
+1,Business Laptop,computer,Computers,Professional laptop for business and school,800,💻,true
+2,DSLR Camera,camera,Cameras,High-quality DSLR camera for photography,1200,📷,true
+3,HD Projector,projector,Projectors,HD projector for presentations,1000,📽️,true
+4,Portable Speaker,audio,Audio Equipment,Portable speaker system for events,700,🔊,true
