@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Equipment Rental | ERMS</title>
+
+    <!-- Base styles -->
+    <link rel="stylesheet" href="../css/base/reset.css">
+    <link rel="stylesheet" href="../css/base/variables.css">
+    <link rel="stylesheet" href="../css/base/global.css">
+
+    <!-- Component styles -->
+    <link rel="stylesheet" href="../css/components/navbar.css">
+    <link rel="stylesheet" href="../css/components/buttons.css">
+
+    <!-- Page styles -->
+    <link rel="stylesheet" href="../css/pages/rental.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="container navbar-container">
+
+            <a href="../index.html" class="logo">
+                ERMS
+            </a>
+
+            <nav class="nav-menu">
+                <a href="../index.html">Home</a>
+                <a href="my-rentals.html">My Rentals</a>
+                <a href="equipment.html">Equipment</a>
+                <a href="rental.html">Rent Equipment</a>
+                <a href="login.html">Login</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <main class="rental-page">
+
+        <section class="rental-container">
+
+            <div class="rental-header">
+                <h1>Rent Equipment</h1>
+                <p>Complete the form below to request an equipment rental.</p>
+            </div>
+
+            <form id="rentalForm" class="rental-form">
+
+                <div class="form-group">
+                    <label for="equipmentId">Select Equipment</label>
+
+                    <select id="equipmentId" name="equipmentId" required>
+                        <option value="">Loading equipment...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="startDate">Rental Date</label>
+
+                    <input
+                        type="date"
+                        id="startDate"
+                        name="startDate"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="endDate">Return Date</label>
+
+                    <input
+                        type="date"
+                        id="endDate"
+                        name="endDate"
+                        required
+                    >
+                </div>
+
+                <div class="rental-total">
+                    <span>Estimated Total</span>
+                    <strong id="totalAmount">₱0.00</strong>
+                </div>
+
+                <p id="rentalMessage" class="rental-message"></p>
+
+                <button type="submit" class="btn btn-primary">
+                    Submit Rental Request
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <script src="../js/pages/rental.js"></script>
+
+</body>
+</html>

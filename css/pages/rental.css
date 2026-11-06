@@ -1,0 +1,107 @@
+
+/* ========================================
+   RENTAL PAGE
+======================================== */
+
+.rental-page {
+    min-height: 80vh;
+    padding: 50px 20px;
+}
+
+.rental-container {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 35px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* RENTAL HEADER */
+
+.rental-header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.rental-header h1 {
+    margin-bottom: 10px;
+}
+
+.rental-header p {
+    color: #666666;
+}
+
+/* RENTAL FORM */
+
+.rental-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #f97316;
+}
+
+/* RENTAL TOTAL */
+
+.rental-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px;
+    background: #f4f6f9;
+    border-radius: 6px;
+}
+
+.rental-total strong {
+    font-size: 1.25rem;
+    color: #f97316;
+}
+
+/* MESSAGE */
+
+.rental-message {
+    min-height: 20px;
+    font-size: 0.95rem;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 600px) {
+    .rental-page {
+        padding: 25px 15px;
+    }
+
+    .rental-container {
+        padding: 22px;
+    }
+
+    .rental-total {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+}

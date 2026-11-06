@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Rentals | ERMS</title>
+
+    <link rel="stylesheet" href="../css/base/reset.css">
+    <link rel="stylesheet" href="../css/base/variables.css">
+    <link rel="stylesheet" href="../css/base/global.css">
+    <link rel="stylesheet" href="../css/components/navbar.css">
+    <link rel="stylesheet" href="../css/pages/my-rentals.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container navbar-container">
+            <a href="equipment.html" class="logo">ERMS</a>
+
+            <nav class="nav-menu">
+                <a href="equipment.html">Equipment</a>
+                <a href="rental.html">Rent Equipment</a>
+                <a href="my-rentals.html" class="active">My Rentals</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="my-rentals-page">
+        <section class="my-rentals-container">
+
+            <div class="my-rentals-header">
+                <div>
+                    <h1>My Rentals</h1>
+                    <p>View and manage your equipment rental history.</p>
+                </div>
+
+                <a href="equipment.html" class="browse-button">
+                    Browse Equipment
+                </a>
+            </div>
+
+            <div class="rental-summary">
+                <div class="summary-card">
+                    <h3>Total Rentals</h3>
+                    <p id="totalRentals">0</p>
+                </div>
+
+                <div class="summary-card">
+                    <h3>Pending</h3>
+                    <p id="pendingRentals">0</p>
+                </div>
+
+                <div class="summary-card">
+                    <h3>Active</h3>
+                    <p id="activeRentals">0</p>
+                </div>
+
+                <div class="summary-card">
+                    <h3>Completed</h3>
+                    <p id="completedRentals">0</p>
+                </div>
+            </div>
+
+            <section class="rental-history">
+                <h2>Rental History</h2>
+
+                <p id="rentalMessage" class="rental-message">
+                    Loading your rentals...
+                </p>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rental ID</th>
+                                <th>Equipment</th>
+                                <th>Rental Period</th>
+                                <th>Days</th>
+                                <th>Total Amount</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="rentalTable"></tbody>
+                    </table>
+                </div>
+            </section>
+
+        </section>
+    </main>
+
+    <script src="../js/pages/my-rentals.js"></script>
+</body>
+</html>

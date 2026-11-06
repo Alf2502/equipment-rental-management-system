@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | ERMS</title>
+
+    <!-- Base styles -->
+    <link rel="stylesheet" href="../css/base/reset.css">
+    <link rel="stylesheet" href="../css/base/variables.css">
+    <link rel="stylesheet" href="../css/base/global.css">
+
+    <!-- Component styles -->
+    <link rel="stylesheet" href="../css/components/navbar.css">
+    <link rel="stylesheet" href="../css/components/buttons.css">
+
+    <!-- Page styles -->
+    <link rel="stylesheet" href="../css/pages/admin.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="container navbar-container">
+
+            <a href="../index.html" class="logo">
+                ERMS Admin
+            </a>
+
+            <nav class="nav-menu">
+                <a href="../index.html">Home</a>
+                <a href="equipment.html">Equipment</a>
+                <a href="#" id="logoutButton">Logout</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <main class="admin-container">
+
+        <!-- DASHBOARD HEADER -->
+        <section class="admin-header">
+            <div>
+                <h1>Admin Dashboard</h1>
+                <p>Manage equipment and customer rental requests.</p>
+            </div>
+        </section>
+
+        <!-- EQUIPMENT MANAGEMENT -->
+        <section class="admin-section">
+
+            <div class="section-header">
+                <div>
+                    <h2>Equipment Management</h2>
+                    <p>Add, edit, and manage rental equipment.</p>
+                </div>
+            </div>
+
+            <form id="equipmentForm" class="equipment-form">
+
+                <input type="hidden" id="equipmentId">
+
+                <div class="form-group">
+                    <label for="equipmentName">Equipment Name</label>
+                    <input
+                        type="text"
+                        id="equipmentName"
+                        placeholder="Equipment name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category ID</label>
+                    <input
+                        type="text"
+                        id="category"
+                        placeholder="e.g. computer"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="categoryName">Category Name</label>
+                    <input
+                        type="text"
+                        id="categoryName"
+                        placeholder="e.g. Computers"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="rate">Daily Rental Rate (₱)</label>
+                    <input
+                        type="number"
+                        id="rate"
+                        min="1"
+                        step="0.01"
+                        placeholder="Enter daily rate"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="icon">Equipment Icon</label>
+                    <input
+                        type="text"
+                        id="icon"
+                        placeholder="e.g. 💻"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="available">Availability</label>
+                    <select id="available" required>
+                        <option value="true">Available</option>
+                        <option value="false">Unavailable</option>
+                    </select>
+                </div>
+
+                <div class="form-group form-group-full">
+                    <label for="description">Description</label>
+                    <textarea
+                        id="description"
+                        rows="3"
+                        placeholder="Equipment description"
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="form-actions form-group-full">
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        id="saveButton"
+                    >
+                        Add Equipment
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn"
+                        id="cancelEditButton"
+                    >
+                        Clear Form
+                    </button>
+                </div>
+
+            </form>
+
+            <p id="equipmentMessage" class="admin-message"></p>
+
+            <div class="table-wrapper">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Equipment</th>
+                            <th>Category</th>
+                            <th>Rate/Day</th>
+                            <th>Availability</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="equipmentTable">
+                        <tr>
+                            <td colspan="6">Loading equipment...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <!-- RENTAL MANAGEMENT -->
+        <section class="admin-section">
+
+            <div class="section-header">
+                <div>
+                    <h2>Rental Requests</h2>
+                    <p>Review customer requests and update rental status.</p>
+                </div>
+            </div>
+
+            <p id="rentalMessage" class="admin-message"></p>
+
+            <div class="table-wrapper">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Rental ID</th>
+                            <th>Customer</th>
+                            <th>Equipment</th>
+                            <th>Rental Period</th>
+                            <th>Total Amount</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="rentalTable">
+                        <tr>
+                            <td colspan="7">Loading rental requests...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="../js/pages/admin.js"></script>
+
+</body>
+</html>

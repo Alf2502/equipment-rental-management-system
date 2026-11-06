@@ -5,7 +5,8 @@ const {
     createRental,
     getMyRentals,
     getAllRentals,
-    updateRentalStatus
+    updateRentalStatus,
+    cancelMyRental
 } = require("../controllers/rental.controller");
 
 const {
@@ -22,5 +23,7 @@ router.get("/my", authenticateToken, getMyRentals);
 router.get("/", authenticateToken, requireAdmin, getAllRentals);
 
 router.put("/:id/status", authenticateToken, requireAdmin, updateRentalStatus);
+
+router.put("/:id/cancel", authenticateToken, cancelMyRental);
 
 module.exports = router;

@@ -244,9 +244,66 @@ async function updateRentalStatus(req, res) {
     }
 }
 
+// Customer Rental Cancellation
+async function cancelMyRental(req, res) {
+    try {
+        const rentals = await readCSV("rentals.csv");
+
+        const rental = rentals.find(
+            item =>
+                String(item.id) === String(req.params.id) &&
+                String(item.userId) === String(req.user.id)
+        );
+
+        if (!rental) {
+            return res.status(404).json({
+                success: false,
+                message: "Rental not found."
+            });
+        }
+
+        if (rental.status !== "pending") {
+            return res.status(400).json({
+                success: false,
+                message: "Only pending rentals can be cancelled."
+            });
+        }
+
+        rental.status = "cancelled";
+
+        await writeCSV("rentals.csv", rentals, [
+            "id",
+            "userId",
+            "equipmentId",
+            "startDate",
+            "endDate",
+            "days",
+            "dailyRate",
+            "totalAmount",
+            "status",
+            "createdAt"
+        ]);
+
+        return res.json({
+            success: true,
+            message: "Rental cancelled successfully.",
+            data: rental
+        });
+
+    } catch (error) {
+        console.error("Cancel rental error:", error);
+
+        return res.status(500).json({
+            success: false,
+            message: "Unable to cancel rental."
+        });
+    }
+}
+
 module.exports = {
     createRental,
     getMyRentals,
     getAllRentals,
-    updateRentalStatus
+    updateRentalStatus,
+    cancelMyRental
 };
